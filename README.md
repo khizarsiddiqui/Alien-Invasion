@@ -21,6 +21,7 @@ You can use almost any type of image file in your game, but it’s easiest when 
 # NOTE
 
 In Pygame, the origin (0, 0) is at the top-left corner of the screen, and coordinates increase as you go down and to the right. On a 1200 by 800 screen, the origin is at the top-left corner, and the bottom-right corner has the coordinates (1200, 800). These coordinates refer to the game window, not the physical screen. When you’re centering a game element, work with the center, centerx, or centery attributes of a rect. When you’re working at an edge of the screen, work with the top, bottom, left, or right attributes. There are also attributes that combine these properties, such as midbottom, midtop, midleft, and midright.
+Depending on the screen width you’ve chosen, the alignment of the first row of aliens might look slightly different on your system.
 
 # Moving Ship Both Left and Right
 
