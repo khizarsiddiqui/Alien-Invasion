@@ -22,7 +22,17 @@ You can use almost any type of image file in your game, but it’s easiest when 
 
 In Pygame, the origin (0, 0) is at the top-left corner of the screen, and coordinates increase as you go down and to the right. On a 1200 by 800 screen, the origin is at the top-left corner, and the bottom-right corner has the coordinates (1200, 800). These coordinates refer to the game window, not the physical screen. When you’re centering a game element, work with the center, centerx, or centery attributes of a rect. When you’re working at an edge of the screen, work with the top, bottom, left, or right attributes. There are also attributes that combine these properties, such as midbottom, midtop, midleft, and midright.
 Depending on the screen width you’ve chosen, the alignment of the first row of aliens might look slightly different on your system.
+Notice that we never make more than one ship; we make only one ship instance for the whole game and recenter it whenever the ship has been hit. The statistic ships_left will tell us when the player has run out of ships.
 
 # Moving Ship Both Left and Right
 
 In __init__(), we add a self.moving_left flag. In update(), we use two separate if blocks rather than an elif to allow the ship’s rect.x value to be increased and then decreased when both arrow keys are held down. This results in the ship standing still. If we used elif for motion to the left, the right arrow key would always have priority. Doing it this way makes the movements more accurate when switching from right to left when the player might momentarily hold down both keys.
+
+# Detecting Bullet Collisions
+
+The new code we added compares the positions of all the bullets in self.bullets and all the aliens in self.aliens, and identifies any that overlap. Whenever the rects of a bullet and alien overlap, groupcollide() adds a keyvalue pair to the dictionary it returns. The two True arguments tell Pygame to delete the bullets and aliens that have collided. (To make a high-powered bullet that can travel to the top of the screen, destroying every alien in its path, you could set the first Boolean argument to False and keep the second Boolean argument set to True. The aliens hit would disappear, but all bullets would stay active until they disappeared off the top of the screen.)
+
+# Adding the Button Class
+
+The _prep_msg() method needs a self parameter and the text to be rendered as an image (msg). The call to font.render() turns the text stored in
+msg into an image, which we then store in self.msg_image. The font.render() method also takes a Boolean value to turn antialiasing on or off (antialiasing makes the edges of the text smoother). The remaining arguments are the specified font color and background color. We set antialiasing to True and set the text background to the same color as the button. (If you don’t include a background color, Pygame will try to render the font with a transparent background.)
