@@ -36,3 +36,7 @@ The new code we added compares the positions of all the bullets in self.bullets 
 
 The _prep_msg() method needs a self parameter and the text to be rendered as an image (msg). The call to font.render() turns the text stored in
 msg into an image, which we then store in self.msg_image. The font.render() method also takes a Boolean value to turn antialiasing on or off (antialiasing makes the edges of the text smoother). The remaining arguments are the specified font color and background color. We set antialiasing to True and set the text background to the same color as the button. (If you don’t include a background color, Pygame will try to render the font with a transparent background.)
+
+# ScoreBoard
+
+In some classic games, the scores have labels, such as Score, High Score, and Level. We’ve omitted these labels because the meaning of each number becomes clear once you’ve played the game. To include these labels, add them to the score strings just before the calls to font.render() in Scoreboard.
